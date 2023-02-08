@@ -13,7 +13,6 @@ Output: 49
 
 Input: height = [1,1]
 Output: 1
-
 var maxArea = function(height) {
     let area=0;
     let i=0;
@@ -22,6 +21,7 @@ var maxArea = function(height) {
         const temp = (j-i)*Math.min(height[i],height[j]);
         area = Math.max(area,temp)
         if(height[i]>height[j]){
+            // smaller move pointer
             j-=1
         }else{
             i+=1

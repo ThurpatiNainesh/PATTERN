@@ -40,21 +40,21 @@ function sumzero(arr){
   }
 
 
-  function sumClosestToX(arr,x){
+  function sumClosestToX(arr,target){
     let left=0
     let rigth= arr.length-1;
     let diff=Infinity
     let a,b
     while(left<rigth){
       let pairSum = arr[left]+arr[rigth]
-        let currDiff = Math.abs(pairSum-x)
+        let currDiff = Math.abs(pairSum-target)
         if(currDiff<diff){
             diff=currDiff
             a=arr[left];
             b=arr[rigth]
         }
       
-      if(pairSum>x)rigth--
+      if(pairSum>target)rigth--
       else left++
       }
     //   console.log(a,b)

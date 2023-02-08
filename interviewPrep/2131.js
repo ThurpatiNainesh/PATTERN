@@ -67,3 +67,8 @@ var longestPalindrome = function(words) {
     
     return samewords * 2;
 };
+
+test()
+function test(){
+	console.log('test')
+}

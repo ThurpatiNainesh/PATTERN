@@ -18,13 +18,12 @@ function threeSum(nums) {
 	nums = nums.sort((a, b) => a - b)
 
     // if the question asks us for a custom target, we can control it here
-	let target = 0
 
 	for (let i = 0; i < nums.length - 2; i++) {
 		// `i` represents the "left" most number in our sorted set.
 		// once this number hits 0, there's no need to go further since
 		// positive numbers cannot sum to a negative number
-		if (nums[i] > target) break
+		if (nums[i] > 0) break
 
 		// we don't want repeats, so skip numbers we've already seen
 		if (i > 0 && nums[i] === nums[i - 1]) continue
@@ -52,7 +51,7 @@ function threeSum(nums) {
 
 			// if we find the target sum, increment `j` and decrement `k` for
 			// other potential combos where `i` is the anchor
-			if (sum === target) {
+			if (sum === 0) {
 				// store the valid threesum
 				results.push([nums[i], nums[j], nums[k]])
 
@@ -72,7 +71,7 @@ function threeSum(nums) {
 				k--
 
 			// if the sum is too small, increment `j` to get closer to the target
-			} else if (sum < target) {
+			} else if (sum < 0) {
 				j++
 
 			// if the sum is too large, decrement `k` to get closer to the target
@@ -85,4 +84,35 @@ function threeSum(nums) {
 	return results
 };
 console.log(threeSum([-1,0,1,2,-1,-4]))
+
+function threeSum2(nums){
+	const ans=[]
+	if(nums.length<3)return ans
+	nums=nums.sort((a,b)=>a-b);
+	for(let i=0;i<nums.length-2;i++){
+		if(nums[i]>0)break;
+		if(i>0&&nums[i]===nums[i-1])continue;
+		let start=i+1;
+		let end=nums.length-1;
+		while(start<end){
+			const sum=nums[i]+nums[start]+nums[end]
+			if(sum===0){
+				ans.push([nums[i],nums[start],nums[end]])
+				start++
+				end--
+				while(start<end&&nums[start]===nums[start-1])start++
+				while(start<end&&nums[end]===nums[end+1])end--
+			}else if(sum<0){
+				start++
+			}else{
+				end--
+			}
+			
+		}
+
+	}
+	return ans
+
+}
+console.log(threeSum2([-1,0,1,2,-1,-4]))
 

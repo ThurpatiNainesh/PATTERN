@@ -3,12 +3,13 @@
   function withoutPair(arr){
        let map= new Map()
        for(let curr of arr){
-        if(map.get(curr)){
-            map.get(curr,map.get(curr)+1)
-        }else{
-            map.set(curr,1)
-        }
+        // if(map.get(curr)){
+            map.set(curr,(map.get(curr)+1)||1)
+        // }else{
+        //     map.set(curr,1)
+        // }
        }
+       console.log(map)
         let result=[]
        for(let val of map){
         if(val[1]%2==1){
